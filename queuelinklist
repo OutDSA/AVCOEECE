@@ -1,0 +1,84 @@
+#include<iostream>
+using namespace std;
+class node
+{
+public:
+int data;
+node *next;
+node(int x)
+{
+data=x;
+next=NULL;
+}
+};
+class queue
+{
+private:
+node *front;
+node* rear;
+public:
+queue()
+{
+front=NULL;
+rear=NULL;
+}
+int empty(void)
+{
+if(front==NULL)
+return(1);
+else return(0);
+}
+int peek(void)
+{
+return(front->data);
+}
+void enqueue(int x)
+{
+node*p=new node(x);
+if(front==NULL)
+{
+front=p;
+rear=p;
+}
+else
+{
+rear->next=p;
+rear=p;
+}
+}
+int dequeue(void)
+{int x= front->data;
+node*p=front;
+front=front->next;
+delete p;
+return(x);
+}
+void display(void)
+{
+node*q=front;
+cout<< endl;
+while(q!=NULL)
+{
+cout<<endl<<q->data;
+q=q->next;
+}
+}
+};
+int main()
+{
+int x;
+queue q;
+q.enqueue(100);
+q.enqueue(200);
+q.enqueue(300);
+q.enqueue(400);
+q.display();
+if(!q.empty())
+{
+x=q.dequeue();
+cout<<endl<<"Removed:"<<x;
+}
+q.display();
+q.peek();
+cout<<endl<<"Front element is:"<<x;
+return(0);}
