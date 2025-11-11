@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+const int Max=5;
+class stack
+{
+private:
+int Top;
+int a[Max];
+public:
+stack()
+{
+Top=-1;
+}
+void push(int x)
+{
+a[++Top]=x;
+}
+int pop(void)
+{
+return(a[Top--]);
+}
+int peek(void)
+{
+return(a[Top]);
+}
+int full()
+{
+if(Top==Max-1)
+return(1);
+else
+return(0);
+}
+int empty(void)
+{
+if(Top==-1)
+return(1);
+else
+return(0);
+}
+void display()
+{
+for(int i=Top;i>=0;i--)
+cout<<endl<<a[i];
+}
+};
+int main()
+{
+stack s;int x;
+if(!s.full())
+s.push(100);
+if(!s.full())
+s.push(200);
+if(!s.full())
+s.push(300);
+if(!s.full())
+s.push(400);
+if(!s.full())
+s.push(500);
+if(!s.full())
+s.push(600);
+s.display();
+if(!s.empty())
+{
+x=s.pop();
+cout<<endl<<"removed:"<<x;
+}
+s.display();
+s.peek();
+cout<<endl<<"Top element is:"<<x;
+return(0);
+}
